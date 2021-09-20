@@ -1,3 +1,40 @@
+function setLoginBtn(){
+	if(localStorage.getItem("cookie_set") === "0"){
+		document.getElementById("login").text = "Login"
+		document.getElementById("login").href="/login.html"
+		document.getElementById("username").innerText = "";
+	}
+	else{
+		document.getElementById("login").text = "Logout"
+		document.getElementById("login").href = "#";
+		let user = getCookie("username")
+		document.getElementById("username").innerText = user;
+		document.getElementById("login").addEventListener('click', logout_click)
+	}
+}
+
+function logout_click(){
+	// destroy cookie
+	localStorage.setItem("cookie_set", 0);
+	document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+	document.getElementById("login").removeEventListener('click', logout_click)
+	setLoginBtn();
+}
+
+function getCookie(cname) {
+	let name = cname + "=";
+	let ca = document.cookie.split(';');
+	for(let i = 0; i < ca.length; i++) {
+		let c = ca[i];
+		while (c.charAt(0) == ' ') {
+			c = c.substring(1);
+		}
+		if (c.indexOf(name) == 0) {
+			return c.substring(name.length, c.length);
+		}
+	}
+	return "";
+}
 
 // var data
 // const fetchSeries = async () => {

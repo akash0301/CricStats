@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>CricStats</title>
+	<link rel="stylesheet" href="/styles.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+<body>
+	<nav class="nav navbar sticky-top navbar-dark bg-dark">
+		<div class="container-fluid">
+		<a class="navbar-brand logo-text" href="#">
+			<img src="/logo.png" alt="" width="45" height="35" class="d-inline-block align-text-center">
+			CricStats
+		</a>
+		<!-- <form class="d-flex">
+			<a id="login" class="btn btn-outline-primary ml-2" type="submit" href="/login.html">Login</a>
+		</form> -->
+		</div>
+	</nav>
+		<div class=" sidebar">
+			<nav class="nav flex-column align-content-center">
+				<a class="nav-link" id="username" style="color: rgb(36, 4, 32);" href="#"></a>
+				<a class="nav-link" href="/">Home</a>
+				<a class="nav-link" href="/series/series.html">Series</a>
+				<a class="nav-link" href="/results/results.html">Results</a>
+				<a class="nav-link" href="/fixtures/fixtures.html">Fixtures</a>
+			</nav>
+		</div>
+		<div class="content login_form">
+			<div class="container row justify-content-around align-items-center" id="login_form">
+				
+					<div class="col-8">
+						<form>
+							<div class="mb-3">
+								<label for="name" class="form-label">Name</label>
+								<input type="text" class="form-control" id="name">
+							</div>
+							<div class="mb-3">
+								<label for="user" class="form-label">Username</label>
+								<input type="text" class="form-control" id="user">
+							</div>
+							<div class="mb-3">
+								<label for="exampleInputPassword1" class="form-label">Password</label>
+								<input type="password" class="form-control" id="exampleInputPassword1">
+							</div>
+							<a type="submit" class="btn btn-primary" onclick="setcookie()" href="/index.html">Submit</a>
+							<!-- /index.html -->
+						</form>
+					</div>
+			</div>
+		</div>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+	<script src="index.js"></script>
+	<script>
+		function setcookie(){
+			localStorage.setItem("cookie_set", 1);
+			let username = document.getElementById("user").value;
+			console.log(username);
+			const d = new Date();
+			// set expiration time of 1 day
+			d.setTime(d.getTime() + (1*24*60*60*1000));
+			let expires = "expires="+ d.toUTCString();
+			document.cookie = "username=" + username + ";" + expires + ";path=/";
+			setLoginBtn()
+		}
+		// deleting the cookie
+		// document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+	</script>
+</body>
+</html>

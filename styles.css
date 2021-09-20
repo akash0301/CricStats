@@ -24,7 +24,7 @@
 	padding-top: 10px;
 }
 
-.logo-text{
+.logo-text, .username{
 	font-size: 1.5rem !important;
 }
 
@@ -48,4 +48,8 @@
 
 @media screen and (max-width: 450px) {
 	.sidebar a {font-size: 12px;}
+}
+
+.login_form{
+	height: 100vh;
 }
