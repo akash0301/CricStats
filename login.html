@@ -57,14 +57,24 @@
 	<script>
 		function setcookie(){
 			localStorage.setItem("cookie_set", 1);
+			let name = document.getElementById("name").value;
 			let username = document.getElementById("user").value;
-			console.log(username);
+			let details = {
+				"name" : name,
+				"username" : username
+			}
+			console.log(details)
 			const d = new Date();
 			// set expiration time of 1 day
 			d.setTime(d.getTime() + (1*24*60*60*1000));
 			let expires = "expires="+ d.toUTCString();
 			document.cookie = "username=" + username + ";" + expires + ";path=/";
+			show_alert(username)
 			setLoginBtn()
+		}
+
+		function show_alert(username){
+			alert("Welcome back " + username + "\n" + "Press Ok to continue.")
 		}
 		// deleting the cookie
 		// document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
